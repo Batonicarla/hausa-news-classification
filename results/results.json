@@ -1,0 +1,337 @@
+[
+  {
+    "model": "BASELINE: TFIDF word+char + LinearSVM (C=1.0)",
+    "notes": "final baseline",
+    "val_accuracy": 0.9085,
+    "val_macro_precision": 0.9014,
+    "val_macro_recall": 0.9022,
+    "val_macro_f1": 0.9011,
+    "val_weighted_f1": 0.9089,
+    "test_accuracy": 0.8917,
+    "test_macro_precision": 0.8845,
+    "test_macro_recall": 0.8788,
+    "test_macro_f1": 0.8803,
+    "test_weighted_f1": 0.8902
+  },
+  {
+    "model": "BiGRU  + random init",
+    "notes": "GRU, emb=random, dim=200, hidden=128, max_len=400",
+    "val_accuracy": 0.8423,
+    "val_macro_precision": 0.8267,
+    "val_macro_recall": 0.8266,
+    "val_macro_f1": 0.826,
+    "val_weighted_f1": 0.8423
+  },
+  {
+    "model": "BiLSTM + random init",
+    "notes": "LSTM, emb=random, dim=200, hidden=128, max_len=400",
+    "val_accuracy": 0.817,
+    "val_macro_precision": 0.8063,
+    "val_macro_recall": 0.7993,
+    "val_macro_f1": 0.7995,
+    "val_weighted_f1": 0.8154
+  },
+  {
+    "model": "BiGRU  + Word2Vec init",
+    "notes": "GRU, emb=pretrained (trainable), dim=200, hidden=128, max_len=400",
+    "val_accuracy": 0.8927,
+    "val_macro_precision": 0.8859,
+    "val_macro_recall": 0.8888,
+    "val_macro_f1": 0.8832,
+    "val_weighted_f1": 0.8955
+  },
+  {
+    "model": "BiLSTM + Word2Vec init",
+    "notes": "LSTM, emb=pretrained (trainable), dim=200, hidden=128, max_len=400",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9063,
+    "val_macro_recall": 0.9055,
+    "val_macro_f1": 0.9035,
+    "val_weighted_f1": 0.9126
+  },
+  {
+    "model": "BiGRU  + fastText init",
+    "notes": "GRU, emb=pretrained (trainable), dim=200, hidden=128, max_len=400",
+    "val_accuracy": 0.8991,
+    "val_macro_precision": 0.8944,
+    "val_macro_recall": 0.8933,
+    "val_macro_f1": 0.8897,
+    "val_weighted_f1": 0.8991
+  },
+  {
+    "model": "BiLSTM + fastText init",
+    "notes": "LSTM, emb=pretrained (trainable), dim=200, hidden=128, max_len=400",
+    "val_accuracy": 0.8991,
+    "val_macro_precision": 0.8912,
+    "val_macro_recall": 0.8927,
+    "val_macro_f1": 0.8902,
+    "val_weighted_f1": 0.8994
+  },
+  {
+    "model": "NEURAL: BiLSTM + Word2Vec init",
+    "notes": "best neural model, test evaluated once",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9063,
+    "val_macro_recall": 0.9055,
+    "val_macro_f1": 0.9035,
+    "val_weighted_f1": 0.9126,
+    "test_accuracy": 0.8791,
+    "test_macro_precision": 0.8751,
+    "test_macro_recall": 0.8629,
+    "test_macro_f1": 0.864,
+    "test_weighted_f1": 0.8756
+  },
+  {
+    "model": "AfroXLMR-base | head256",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=2e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.918,
+    "val_macro_precision": 0.9108,
+    "val_macro_recall": 0.9161,
+    "val_macro_f1": 0.9121,
+    "val_weighted_f1": 0.9183
+  },
+  {
+    "model": "AfriBERTa-base | head256",
+    "notes": "castorini/afriberta_base, len=256, trunc=head, lr=5e-05, bs=16x1, epochs=4",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9037,
+    "val_macro_recall": 0.9097,
+    "val_macro_f1": 0.9049,
+    "val_weighted_f1": 0.9131
+  },
+  {
+    "model": "XLM-R-base | head256",
+    "notes": "xlm-roberta-base, len=256, trunc=head, lr=2e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.8991,
+    "val_macro_precision": 0.8888,
+    "val_macro_recall": 0.8941,
+    "val_macro_f1": 0.8901,
+    "val_weighted_f1": 0.8997
+  },
+  {
+    "model": "AfroXLMR-base | head+tail256",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head+tail, lr=2e-05, bs=16x1, epochs=4",
+    "val_accuracy": 0.9148,
+    "val_macro_precision": 0.9063,
+    "val_macro_recall": 0.9098,
+    "val_macro_f1": 0.9071,
+    "val_weighted_f1": 0.9151
+  },
+  {
+    "model": "AfroXLMR-base | head512",
+    "notes": "Davlan/afro-xlmr-base, len=512, trunc=head, lr=2e-05, bs=8x2, epochs=6",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9027,
+    "val_macro_recall": 0.9077,
+    "val_macro_f1": 0.9042,
+    "val_weighted_f1": 0.9123
+  },
+  {
+    "model": "TFIDF-word + LogReg",
+    "notes": "baseline",
+    "val_accuracy": 0.918,
+    "val_macro_precision": 0.9125,
+    "val_macro_recall": 0.9122,
+    "val_macro_f1": 0.9115,
+    "val_weighted_f1": 0.9181
+  },
+  {
+    "model": "TFIDF-word + LinearSVM",
+    "notes": "baseline",
+    "val_accuracy": 0.9054,
+    "val_macro_precision": 0.8981,
+    "val_macro_recall": 0.8965,
+    "val_macro_f1": 0.8968,
+    "val_weighted_f1": 0.9053
+  },
+  {
+    "model": "TFIDF-word + CompNB",
+    "notes": "baseline",
+    "val_accuracy": 0.9085,
+    "val_macro_precision": 0.9044,
+    "val_macro_recall": 0.8939,
+    "val_macro_f1": 0.8971,
+    "val_weighted_f1": 0.9072
+  },
+  {
+    "model": "TFIDF-char + LinearSVM",
+    "notes": "baseline",
+    "val_accuracy": 0.8991,
+    "val_macro_precision": 0.8908,
+    "val_macro_recall": 0.8915,
+    "val_macro_f1": 0.8906,
+    "val_weighted_f1": 0.8994
+  },
+  {
+    "model": "TFIDF-word+char + LinearSVM",
+    "notes": "baseline",
+    "val_accuracy": 0.9085,
+    "val_macro_precision": 0.9014,
+    "val_macro_recall": 0.9022,
+    "val_macro_f1": 0.9011,
+    "val_weighted_f1": 0.9089
+  },
+  {
+    "model": "TFIDF-word + LinearSVM (balanced)",
+    "notes": "baseline",
+    "val_accuracy": 0.9085,
+    "val_macro_precision": 0.9017,
+    "val_macro_recall": 0.9035,
+    "val_macro_f1": 0.9022,
+    "val_weighted_f1": 0.9087
+  },
+  {
+    "model": "Majority class",
+    "notes": "trivial reference",
+    "val_accuracy": 0.1577,
+    "val_macro_precision": 0.0225,
+    "val_macro_recall": 0.1429,
+    "val_macro_f1": 0.0389,
+    "val_weighted_f1": 0.043
+  },
+  {
+    "model": "BASELINE: TFIDF LogReg (C=10.0)",
+    "notes": "final baseline, chosen by val macro-F1",
+    "val_accuracy": 0.918,
+    "val_macro_precision": 0.9125,
+    "val_macro_recall": 0.9122,
+    "val_macro_f1": 0.9115,
+    "val_weighted_f1": 0.9181,
+    "test_accuracy": 0.887,
+    "test_macro_precision": 0.8798,
+    "test_macro_recall": 0.873,
+    "test_macro_f1": 0.8753,
+    "test_weighted_f1": 0.886
+  },
+  {
+    "model": "PREPROC: LogReg norm=False tok=default",
+    "notes": "Hausa orthography experiment",
+    "val_accuracy": 0.918,
+    "val_macro_precision": 0.9125,
+    "val_macro_recall": 0.9122,
+    "val_macro_f1": 0.9115,
+    "val_weighted_f1": 0.9181
+  },
+  {
+    "model": "PREPROC: LogReg norm=False tok=keep-apostrophe",
+    "notes": "Hausa orthography experiment",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9067,
+    "val_macro_recall": 0.9057,
+    "val_macro_f1": 0.9056,
+    "val_weighted_f1": 0.9117
+  },
+  {
+    "model": "PREPROC: LogReg norm=True tok=default",
+    "notes": "Hausa orthography experiment",
+    "val_accuracy": 0.9148,
+    "val_macro_precision": 0.9081,
+    "val_macro_recall": 0.9092,
+    "val_macro_f1": 0.9081,
+    "val_weighted_f1": 0.915
+  },
+  {
+    "model": "PREPROC: LogReg norm=True tok=keep-apostrophe",
+    "notes": "Hausa orthography experiment",
+    "val_accuracy": 0.9054,
+    "val_macro_precision": 0.8991,
+    "val_macro_recall": 0.8999,
+    "val_macro_f1": 0.8989,
+    "val_weighted_f1": 0.9056
+  },
+  {
+    "model": "TRANSFORMER: AfroXLMR-base | head256",
+    "notes": "best transformer by val macro-F1, test evaluated once",
+    "val_accuracy": 0.918,
+    "val_macro_precision": 0.9108,
+    "val_macro_recall": 0.9161,
+    "val_macro_f1": 0.9121,
+    "val_weighted_f1": 0.9183,
+    "test_accuracy": 0.9137,
+    "test_macro_precision": 0.9082,
+    "test_macro_recall": 0.9063,
+    "test_macro_f1": 0.9071,
+    "test_weighted_f1": 0.9134
+  },
+  {
+    "model": "AfroXLMR-base | head256 | lr1e-05",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=1e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9211,
+    "val_macro_precision": 0.9154,
+    "val_macro_recall": 0.9198,
+    "val_macro_f1": 0.9168,
+    "val_weighted_f1": 0.9212
+  },
+  {
+    "model": "AfroXLMR-base | head256 | lr3e-05",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=3e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9085,
+    "val_macro_precision": 0.9008,
+    "val_macro_recall": 0.9061,
+    "val_macro_f1": 0.9028,
+    "val_weighted_f1": 0.909
+  },
+  {
+    "model": "AfroXLMR-base | head256 | lr5e-05",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=5e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9148,
+    "val_macro_precision": 0.9098,
+    "val_macro_recall": 0.9139,
+    "val_macro_f1": 0.9098,
+    "val_weighted_f1": 0.9146
+  },
+  {
+    "model": "SEED1 AfroXLMR-base | head256",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=2e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9059,
+    "val_macro_recall": 0.9077,
+    "val_macro_f1": 0.9061,
+    "val_weighted_f1": 0.9118
+  },
+  {
+    "model": "SEED1 AfriBERTa-base | head256",
+    "notes": "castorini/afriberta_base, len=256, trunc=head, lr=5e-05, bs=16x1, epochs=4",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9052,
+    "val_macro_recall": 0.9099,
+    "val_macro_f1": 0.9058,
+    "val_weighted_f1": 0.9124
+  },
+  {
+    "model": "SEED2 AfroXLMR-base | head256",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=2e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9044,
+    "val_macro_recall": 0.9083,
+    "val_macro_f1": 0.9056,
+    "val_weighted_f1": 0.9118
+  },
+  {
+    "model": "SEED2 AfriBERTa-base | head256",
+    "notes": "castorini/afriberta_base, len=256, trunc=head, lr=5e-05, bs=16x1, epochs=4",
+    "val_accuracy": 0.918,
+    "val_macro_precision": 0.9114,
+    "val_macro_recall": 0.9093,
+    "val_macro_f1": 0.9096,
+    "val_weighted_f1": 0.9183
+  },
+  {
+    "model": "SEED3 AfroXLMR-base | head256",
+    "notes": "Davlan/afro-xlmr-base, len=256, trunc=head, lr=2e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9148,
+    "val_macro_precision": 0.9083,
+    "val_macro_recall": 0.9099,
+    "val_macro_f1": 0.9084,
+    "val_weighted_f1": 0.9148
+  },
+  {
+    "model": "SEED3 AfriBERTa-base | head256",
+    "notes": "castorini/afriberta_base, len=256, trunc=head, lr=5e-05, bs=16x1, epochs=6",
+    "val_accuracy": 0.9117,
+    "val_macro_precision": 0.9044,
+    "val_macro_recall": 0.9096,
+    "val_macro_f1": 0.9049,
+    "val_weighted_f1": 0.912
+  }
+]
