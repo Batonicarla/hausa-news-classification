@@ -25,7 +25,7 @@ The free Streamlit app goes to sleep when nobody uses it. If it shows a "wake up
 
 The final model was chosen on **validation** macro-F1, and the test set was used once per final model. Seed means and standard deviations are in the report (Section 6). `<UPDATE: add the seed mean ± std and the bootstrap result here>`
 
-![Test results](figures/test_comparison.png)
+
 
 ## 1. Problem and motivation
 
