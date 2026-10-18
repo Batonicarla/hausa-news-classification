@@ -27,15 +27,11 @@ st.write("Classifies Hausa news text into 7 topics: business, entertainment, hea
          "religion, sports, technology. Fine-tuned on MasakhaNEWS (BBC Hausa). It only knows these "
          "7 topics and was trained on news articles, not social media.")
 
-def load_example():
-    choice = st.session_state["example_choice"]
-    if choice != "(none)":
-        st.session_state["text"] = EXAMPLES[choice]
-
-
 if "text" not in st.session_state:
     st.session_state["text"] = ""
-st.selectbox("Try an example", ["(none)"] + list(EXAMPLES), key="example_choice", on_change=load_example)
+choice = st.selectbox("Try an example", ["(none)"] + list(EXAMPLES))
+if st.button("Load example", key="load") and choice != "(none)":
+    st.session_state["text"] = EXAMPLES[choice]
 
 text = st.text_area("Hausa news text (headline and/or article)", key="text", height=220,
                     placeholder="Paste a Hausa news headline or article here...")
