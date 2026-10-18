@@ -23,22 +23,22 @@ The free Streamlit app goes to sleep when nobody uses it. If it shows a "wake up
 | BiLSTM + Word2Vec (best recurrent model) | 0.879 | 0.864 |
 | **AfroXLMR-base fine-tuned (final model)** | **0.906** | **0.898** |
 
-The final model was chosen on **validation** macro-F1, and the test set was used once per final model. Seed means and standard deviations are in the report (Section 6). `<UPDATE: add the seed mean ± std and the bootstrap result here>`
+Once the final model was found, the test set was used once per final model as the macro-F1 measure for the model was validated. The means and standard deviations in the report (Section 6) are based on seeds.  
 
 
 
 ## 1. Problem and motivation
 
-Hausa is a widely spoken language in West Africa, but it has few labelled resources for automatic text classification. This project builds and evaluates a topic classifier for Hausa news, compares classical, recurrent, and transformer models, analyses the errors, and deploys the best model as a web application so anyone can paste Hausa text and get a predicted topic.
+In West Africa, Hausa is a pervasive language; very few labelled resources are available for automatic text classification in this language. Construction and Testing of a Hausa news topic classifier; comparison between Classical models and Recurrent models with a Transformer model; Hausa text classification error analysis; and deployment of the best model in a web application for anyone to paste Hausa text and get a predicted topic
 
 ## 2. Dataset
 
-- **Source:** the Hausa part of **MasakhaNEWS** (Adelani et al., 2023), loaded from the Hugging Face Hub (`masakhane/masakhanews`). The articles come from BBC Hausa.
-- **Splits:** official train / validation / test = **2,219 / 317 / 637** articles.
-- **Classes:** 7 topics. In the training set, entertainment, politics, sports, health, and religion each make up about 15.5% to 15.8%, business 12.6%, and technology 9.1%. The mean article length is about 448 words.
-- **Preparation:** headline and body joined, URLs removed, whitespace normalised. There are no empty texts, no duplicates in the training set, and no overlap between splits.
-- **Known issues:** a single news outlet; time-specific vocabulary; hooked letters (ɓ ɗ ƙ ƴ) and apostrophes written inconsistently; invisible U+FEFF characters in about 7.8% of test articles; some ambiguous labels, mainly in the business class.
-- No synthetic or machine-generated data was used.
+The Hausa part of MasakhaNEWS (Adelani et al., 2023) was loaded from the Hugging Face Hub (masakhane/masakhanews). The articles are taken from BBC Hausa.
+Splits: official train / validation / test = 2,219 / 317 / 637 articles.
+Classes: 7 topics. In the training set, the respective percentages for entertainment, politics, sports, health and religion apply to 15.5% to 15.8%, business to 12.6%, and technology to 9.1%. The average length of articles is approximately 448 words.
+Headline + body, no URLs - whitespace normalised. No blank texts, no dups in the training set and no splits overlap.
+Common problems/challenges: one single news outlet, time-specific vocabulary, hooked letters (ɓ ɗ ƙ ƴ), and the FEFF character written inconsistently in about 7.8% of test articles, some ambiguous terminology (mostly in the business class).
+Synthetic and machine-generated data were not used.
 
 
 
@@ -80,7 +80,7 @@ Differences of about 0.01 are within epoch-to-epoch and seed variation, so I do 
 
 ## 5. Error analysis
 
-The final model makes 60 errors on 637 test articles (9.4%). Most involve the business class; for example, business articles predicted as health, politics or religion. Typical causes are ambiguous labels, multi-topic digest articles, and topic words that point to another class (an economics article about the Hajj predicted as religion). Error rates are higher for longer articles (truncation), for articles with hooked letters (11.0% vs 6.4%), and for articles with a word-initial apostrophe, such as *' yan* (12.9% vs 4.8%). These are correlations, not proof of cause. `<UPDATE: add the annotated error counts from notebook 05>`
+The final model makes 60 errors on 637 test articles (9.4%). Most of these are in the business class; for instance, health, politics, or Religion were predicted as business. Common examples are vague topics, topics in other digest articles, and topic words that are linked to a different topic (an economics article about the Hajj being predicted as a religion class). Longer articles (truncation) have higher error rates, and articles with hooked letters (11.0% vs 6.4%) and articles with a word-initial apostrophe (' yan, 12.9% vs 4.8%) also have higher error rates. These are correlations, NOT cause-and-effect relationships `<UPDATE: add the annotated error counts from notebook 05>.`
 
 
 
@@ -88,7 +88,7 @@ The final model makes 60 errors on 637 test articles (9.4%). Most involve the bu
 
 ## 6. Deployment
 
-The web app (`app/streamlit_app.py`) is hosted on **Streamlit Community Cloud** from this repository. When it starts, `app/classifier.py` downloads the fine-tuned model from the Hugging Face Hub, applies the same cleaning and truncation as training, and returns the predicted topic with probabilities. Users can paste Hausa text or load one of four examples (three correct and one failure case).
+The web app lives on Streamlit Community Cloud from this streamlit_app.py repository. It begins by downloading the fine-tuned model from the Hugging Face Hub and then applies the cleaning and truncating process as during the training phase before returning the predicted topic along with probabilities. The user can copy Hausa text or import one of four examples (3 being correct & one failure).
 
 
 <!-- ![App screenshot](figures/app_screenshot.png) -->
@@ -123,19 +123,18 @@ streamlit run app/streamlit_app.py
 The first start downloads the model (about 1 GB). No Hugging Face token is needed to run the app.
 
 **Reproduce the experiments**
-1. Open the notebooks in Google Colab and run them in order 01 to 06. Notebooks 03 and 04 need a **GPU runtime**.
-2. Each notebook mounts Google Drive and works in `/content/drive/MyDrive/hausa_news_project`; change `PROJECT_DIR` if you use another folder.
-3. The data is downloaded automatically from the Hugging Face Hub. A Hugging Face token (write access) is needed only for the upload step in notebook 06.
-
+1. Open all the notebooks (Google Colab) and execute them sequentially from 01 through 06. A **GPU runtime** is required for notebooks 03 and 04.
+2. Both of the notebooks mount Google Drive and operate in /content/drive/MyDrive/hausa_news_project; if you are using a different place, modify PROJECT_DIR.
+3. The data will be updated automatically from Hugging Face Hub. A Hugging Face token (write access) is needed only for the upload step in notebook 06.
 ## 9. Existing resources and my own work
 
-**Used:** the MasakhaNEWS dataset; the pretrained models `Davlan/afro-xlmr-base`, `castorini/afriberta_base` and XLM-R; Hugging Face Transformers and Datasets, PyTorch, scikit-learn, gensim, Streamlit.
+## The codes used: Pretrained models Davlan/afro-xlmr-base, castorini/afriberta_base, XLM-R, from Hugging Face Transformers and Datasets, PyTorch, scikit-learn, gensim, and the Streamlit library.
 
-**My work:** data checks and cleaning; baseline tuning grid; recurrent models and embedding training; transformer fine-tuning pipeline, truncation and learning-rate experiments and seed repetitions; Hausa preprocessing experiment; bootstrap tests; manual error annotation; the web app and its deployment.
+## My work: data checks and cleaning, baseline tuning grid, recurrent models and embedding training, truncation and learning-rate experiments and repetitions of seeds, Hausa preprocessing experiment, bootstrap tests, manual error annotation, the web app and deployment.
 
 ## 10. Limitations and future work
 
-One news source and a small training set; no "none of these" class; truncation of long articles; ambiguous labels; a free hosting tier that sleeps and has limited memory. Future work: remove the invisible characters and retrain, handle long articles by chunking, test on a second news source, add an out-of-scope class, and relabel ambiguous articles with a Hausa speaker.
+Just one news feed and a tiny training set; no ‘none of these' class; cutting long articles; poorly worded labels; a free web hosting tier that goes asleep and has limited memory. Future work: remove (or isolate these) invisible characters and retrain, chunk long articles, test on second news source, add an out-of-scope class, relabel ambiguous articles with a Hausa speaker.
 
 ## 11. References
 
