@@ -23,7 +23,7 @@ The free Streamlit app goes to sleep when nobody uses it. If it shows a "wake up
 | BiLSTM + Word2Vec (best recurrent model) | 0.879 | 0.864 |
 | **AfroXLMR-base fine-tuned (final model)** | **0.906** | **0.898** |
 
-Once the final model was found, the test set was used once per final model as the macro-F1 measure for the model was validated. The means and standard deviations in the report (Section 6) are based on seeds.  
+Once the final model was selected, we used the test set once per final model to validate the macro-F1 measure. The means and standard deviations in the report (Section 6) are based on seeds.  
 
 
 
@@ -33,10 +33,10 @@ In West Africa, Hausa is a pervasive language; very few labelled resources are a
 
 ## 2. Dataset
 
-The Hausa part of MasakhaNEWS (Adelani et al., 2023) was loaded from the Hugging Face Hub (masakhane/masakhanews). The articles are taken from BBC Hausa.
+We loaded the Hausa portion of MasakhaNEWS (Adelani et al., 2023) from the Hugging Face Hub (masakhane/masakhanews). The articles were taken from BBC Hausa.
 Splits: official train / validation / test = 2,219 / 317 / 637 articles.
-Classes: 7 topics. In the training set, the respective percentages for entertainment, politics, sports, health and religion apply to 15.5% to 15.8%, business to 12.6%, and technology to 9.1%. The average length of articles is approximately 448 words.
-Headline + body, no URLs - whitespace normalised. No blank texts, no dups in the training set and no splits overlap.
+Classes: 7 topics. In the training set, the respective percentages for entertainment, politics, sports, health, and religion apply to 15.5% to 15.8%, business to 12.6%, and technology to 9.1%. The average length of articles is approximately 448 words.
+Headline + body, no URLs - whitespace normalised. No blank texts, no duplicates in the training set, and no splits overlap.
 Common problems/challenges: one single news outlet, time-specific vocabulary, hooked letters (ɓ ɗ ƙ ƴ), and the FEFF character written inconsistently in about 7.8% of test articles, some ambiguous terminology (mostly in the business class).
 Synthetic and machine-generated data were not used.
 
@@ -88,7 +88,7 @@ The final model makes 60 errors on 637 test articles (9.4%). Most of these are i
 
 ## 6. Deployment
 
-The web app lives on Streamlit Community Cloud from this streamlit_app.py repository. It begins by downloading the fine-tuned model from the Hugging Face Hub and then applies the cleaning and truncating process as during the training phase before returning the predicted topic along with probabilities. The user can copy Hausa text or import one of four examples (3 being correct & one failure).
+The web app lives on Streamlit Community Cloud from this streamlit_app.py repository. It begins by downloading the fine-tuned model from the Hugging Face Hub and then applies the cleaning and truncating process as during the training phase before returning the predicted topic along with probabilities. The user can copy Hausa text or import one of four examples (3 being correct & one a failure).
 
 
 <!-- ![App screenshot](figures/app_screenshot.png) -->
@@ -124,13 +124,14 @@ The first start downloads the model (about 1 GB). No Hugging Face token is neede
 
 **Reproduce the experiments**
 1. Open all the notebooks (Google Colab) and execute them sequentially from 01 through 06. A **GPU runtime** is required for notebooks 03 and 04.
-2. Both of the notebooks mount Google Drive and operate in /content/drive/MyDrive/hausa_news_project; if you are using a different place, modify PROJECT_DIR.
+2. Both of the notebooks mount Google Drive and operate in /content/drive/MyDrive/hausa_news_project; if you are using a different location, modify PROJECT_DIR.
 3. The data will be updated automatically from Hugging Face Hub. A Hugging Face token (write access) is needed only for the upload step in notebook 06.
 ## 9. Existing resources and my own work
 
-## The codes used: Pretrained models Davlan/afro-xlmr-base, castorini/afriberta_base, XLM-R, from Hugging Face Transformers and Datasets, PyTorch, scikit-learn, gensim, and the Streamlit library.
 
-## My work: data checks and cleaning, baseline tuning grid, recurrent models and embedding training, truncation and learning-rate experiments and repetitions of seeds, Hausa preprocessing experiment, bootstrap tests, manual error annotation, the web app and deployment.
+##** The codes used: Pretrained models Davlan/afro-xlmr-base, castorini/afriberta_base, XLM-R, from Hugging Face Transformers and Datasets, PyTorch, scikit-learn, gensim, and the Streamlit library.**
+
+##** My work: data checks and cleaning, baseline tuning grid, recurrent models and embedding training, truncation and learning-rate experiments and repetitions of seeds, Hausa preprocessing experiment, bootstrap tests, manual error annotation, the web app and deployment.**
 
 ## 10. Limitations and future work
 
