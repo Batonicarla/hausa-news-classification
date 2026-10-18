@@ -74,13 +74,13 @@ Synthetic and machine-generated data were not used.
 | AfroXLMR-base, head 512 | 0.904 |
 | **AfroXLMR-base, head 256, lr 1e-5 (final)** | **0.917** |
 
-Differences of about 0.01 are within epoch-to-epoch and seed variation, so I do not claim that small differences matter. The full table, seed results and the preprocessing experiment are in `results/` and the report.
+Differences of about 0.01 are within epoch-to-epoch and seed variation, so I do not claim that small differences matter. The full table, seed results, and the preprocessing experiment are in `results/` and the report.
 
 
 
 ## 5. Error analysis
 
-The final model makes 60 errors on 637 test articles (9.4%). Most of these are in the business class; for instance, health, politics, or Religion were predicted as business. Common examples are vague topics, topics in other digest articles, and topic words that are linked to a different topic (an economics article about the Hajj being predicted as a religion class). Longer articles (truncation) have higher error rates, and articles with hooked letters (11.0% vs 6.4%) and articles with a word-initial apostrophe (' yan, 12.9% vs 4.8%) also have higher error rates. These are correlations, NOT cause-and-effect relationships `<UPDATE: add the annotated error counts from notebook 05>.`
+The final model makes 60 errors on 637 test articles (9.4%). Most of these are in the business class; for instance, health, politics, or Religion were predicted as business. Common examples are vague topics, topics in other digest articles, and topic words that are linked to a different topic (an economics article about the Hajj being predicted as a religion class). Longer articles (truncation) have higher error rates, and articles with hooked letters (11.0% vs 6.4%) and articles with a word-initial apostrophe (' yan, 12.9% vs 4.8%) also have higher error rates. These are correlations, NOT cause-and-effect relationships 
 
 
 
@@ -129,13 +129,13 @@ The first start downloads the model (about 1 GB). No Hugging Face token is neede
 ## 9. Existing resources and my own work
 
 
-##** The codes used: Pretrained models Davlan/afro-xlmr-base, castorini/afriberta_base, XLM-R, from Hugging Face Transformers and Datasets, PyTorch, scikit-learn, gensim, and the Streamlit library.**
+ The code used: Pretrained models Davlan/afro-xlmr-base, castorini/afriberta_base, XLM-R, from Hugging Face Transformers and Datasets, PyTorch, scikit-learn, gensim, and the Streamlit library.**
 
-##** My work: data checks and cleaning, baseline tuning grid, recurrent models and embedding training, truncation and learning-rate experiments and repetitions of seeds, Hausa preprocessing experiment, bootstrap tests, manual error annotation, the web app and deployment.**
+My work: data checks and cleaning, baseline tuning grid, recurrent models and embedding training, truncation and learning-rate experiments and repetitions of seeds, Hausa preprocessing experiment, bootstrap tests, manual error annotation, the web app and deployment.**
 
 ## 10. Limitations and future work
 
-Just one news feed and a tiny training set; no ‘none of these' class; cutting long articles; poorly worded labels; a free web hosting tier that goes asleep and has limited memory. Future work: remove (or isolate these) invisible characters and retrain, chunk long articles, test on second news source, add an out-of-scope class, relabel ambiguous articles with a Hausa speaker.
+Just one news feed and a tiny training set; no ‘none of these' class; cutting long articles; poorly worded labels; a free web hosting tier that goes asleep and has limited memory. Future work: remove (or isolate these) invisible characters and retrain, chunk long articles, test on a second news source, add an out-of-scope class, relabel ambiguous articles with a Hausa speaker.
 
 ## 11. References
 
