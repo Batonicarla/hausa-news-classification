@@ -1,5 +1,5 @@
 Normalised letters,Tokenizer,Val accuracy,Val macro-F1
 False,default,0.918,0.912
 False,keep-apostrophe,0.912,0.906
-True,default,0.915,0.908
+True, default,0.915,0.908
 True,keep-apostrophe,0.905,0.899
