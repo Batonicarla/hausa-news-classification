@@ -8,8 +8,8 @@ The system classifies Hausa news text into seven topics: **business, entertainme
 | Resource | Link |
 |---|---|
 | Live app (Streamlit) | https://hausa-news-classification-dz8lsy3zgsb3nqniodefce.streamlit.app/ |
-| Demo video | <VIDEO_URL> |
-| Report (PDF) | <REPORT_LINK_OR_PATH> |
+| Demo video | https://go.screenpal.com/watch/cO6FQ2nyDbK |
+| Report (PDF) |  |
 | Fine-tuned model (Hugging Face Hub) | https://huggingface.co/Batonicarla1/hausa-news-classifier |
 
 The free Streamlit app goes to sleep when nobody uses it. If it shows a "wake up" button, click it and wait about a minute. The first start also downloads the model (about 1 GB), so allow a few minutes.
