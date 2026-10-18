@@ -52,5 +52,16 @@ if st.button("Classify", type="primary", key="classify"):
         st.bar_chart(pd.DataFrame({"probability": probs}, index=clf.labels))
 
 with st.expander("About this model"):
-    st.write("Fine-tuned from Davlan/afro-xlmr-base on the Hausa part of MasakhaNEWS. "
-             "Model page: https://huggingface.co/Batonicarla1/hausa-news-classifier")
+    st.markdown("""
+**Model:** AfroXLMR-base (`Davlan/afro-xlmr-base`) fine-tuned for 7-topic classification.
+
+**Data:** Hausa part of MasakhaNEWS (BBC Hausa): 2,219 training, 317 validation, and 637 test articles.
+
+**Test results:** accuracy 0.906, macro-F1 0.898 (baseline TF-IDF + logistic regression: 0.887 / 0.875).
+
+**Input:** Only the first 256 tokens of the text are used. Very short text is less reliable.
+
+**Limits:** It knows only these 7 topics, was trained on BBC News only, and can be confidently wrong on mixed-topic or ambiguous articles.
+
+**Links:** [Model on Hugging Face](https://huggingface.co/Batonicarla1/hausa-news-classifier) · [Code on GitHub](https://github.com/Batonicarla/hausa-news-classification)
+""")
